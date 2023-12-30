@@ -1,43 +1,46 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 card align-items-center shadow rounded elevation-3">
-      <img src="https://bcw.blob.core.windows.net/public/img/8600856373152463" alt="CodeWorks Logo"
-        class="rounded-circle">
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
-      </h1>
-    </div>
+  <div v-if="coverImg" class="bg-img">
+    <!-- <img class="img-fluid" :src="coverImg" alt=""> -->
+    <p>hello world</p>
+
   </div>
 </template>
 
 <script>
+import { computed, onMounted } from 'vue'
+import Pop from '../utils/Pop'
+import { logger } from '../utils/Logger'
+import { imagesService } from '../services/ImagesService'
+import { AppState } from '../AppState.js'
+
 export default {
   setup() {
+
+    onMounted(() => {
+      getImages()
+    })
+
+    async function getImages() {
+      try {
+        await imagesService.getImages()
+      } catch (error) {
+        // Pop.error(error)
+        logger.log(error)
+      }
+    }
     return {
-      
+      // image: computed(() => AppState.activeImage?.largeImgUrl)
+      coverImg: computed(() => `url(${AppState.activeImage?.imgUrl})`)
+
     }
   }
 }
 </script>
 
 <style scoped lang="scss">
-.home {
-  display: grid;
-  height: 80vh;
-  place-content: center;
-  text-align: center;
-  user-select: none;
-
-  .home-card {
-    width: clamp(500px, 50vw, 100%);
-
-    >img {
-      height: 200px;
-      max-width: 200px;
-      width: 100%;
-      object-fit: contain;
-      object-position: center;
-    }
-  }
+.bg-img {
+  background-image: v-bind(coverImg);
+  background-position: center;
+  background-size: cover;
 }
 </style>
