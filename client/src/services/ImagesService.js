@@ -4,11 +4,12 @@ import { AppState } from "../AppState.js";
 class ImagesService {
 
 
-    async getImages() {
+    async getImage() {
         const res = await api.get('api/images')
         logger.log('got images FINISH IN THE SERVICE', res.data)
+        // AppState.activeImage = res.data.map(pojo => new Image(pojo))
         AppState.activeImage = new Image(res.data)
-        logger.log(AppState.activeImage)
+        logger.log('is this it?', AppState.activeImage)
 
     }
 }
