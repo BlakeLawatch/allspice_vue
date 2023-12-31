@@ -8,15 +8,12 @@
                     {{ weather.name }}</p>
             </div>
         </section>
-
     </div>
 </template>
 
 
 <script>
-import { computed } from 'vue';
 import { Weather } from '../models/Weather';
-import { AppState } from '../AppState';
 
 
 export default {
@@ -29,9 +26,4 @@ export default {
 </script>
 
 
-<style lang="scss" scoped>
-.box-shadow {
-    background-color: rgba(128, 128, 128, 0.432);
-    border-radius: 40px;
-}
-</style>
+<style lang="scss" scoped></style>

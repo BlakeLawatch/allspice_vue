@@ -8,5 +8,7 @@ export const AppState = reactive({
   /** @type {import('./models/Image.js').Image | null} */
   activeImage: null,
   /** @type {import('./models/Weather.js').Weather | null} */
-  weather: null
+  weather: null,
+  /** @type {import('./models/Quote.js').Quote | null} */
+  quote: null
 })

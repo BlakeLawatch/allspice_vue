@@ -7,9 +7,9 @@ class WeatherService {
 
     async getWeather() {
         const res = await api.get(`api/weather`)
-        logger.log('got weather FINISH IN THE SERVICE', res.data)
+        // logger.log('got weather FINISH IN THE SERVICE', res.data)
         AppState.weather = new Weather(res.data)
-        logger.log('finished weather', AppState.weather)
+        // logger.log('finished weather', AppState.weather)
     }
 }
 
