@@ -11,7 +11,7 @@ export const ToDoSchema = new Schema(
     }
 )
 
-ToDoSchema.virtual('creatorId', {
+ToDoSchema.virtual('creator', {
     localField: "creatorId",
     foreignField: "_id",
     ref: "Account",
