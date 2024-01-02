@@ -1,5 +1,5 @@
 import { AppState } from "../AppState"
-import { ToDos } from "../models/Todo"
+import { ToDos } from "../models/ToDos"
 import { logger } from "../utils/Logger"
 import { api } from "./AxiosService"
 

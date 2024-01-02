@@ -14,6 +14,7 @@ export class ToDoController extends BaseController {
     async getToDos(req, res, next) {
         try {
             const todoId = req.params.todoId
+            const userId = req.userInfo.id
             const todos = await toDoService.getToDos(todoId)
             return res.send(todos)
         } catch (error) {

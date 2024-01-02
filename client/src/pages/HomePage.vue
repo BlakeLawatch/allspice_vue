@@ -9,8 +9,8 @@
       <div>
         <QuoteComponent :quote="quote" />
       </div>
-      <div>
-        <p>{{ todos }}</p>
+      <div v-for="todo in todos" :key="todo.id">
+        <TodoComponent :todo="todo" />
       </div>
     </section>
   </div>
@@ -26,6 +26,7 @@ import { quotesService } from '../services/QuotesService'
 import { todosService } from '../services/TodosService'
 import WeatherComponent from '../components/WeatherComponent.vue'
 import QuoteComponent from '../components/QuoteComponent.vue'
+import TodoComponent from '../components/TodoComponent.vue'
 
 export default {
   setup() {
@@ -75,10 +76,10 @@ export default {
       coverImg: computed(() => `url(${AppState.activeImage?.imgUrl})`),
       weather: computed(() => AppState.weather),
       quote: computed(() => AppState.quote),
-      todos: computed(() => AppState.todos)
+      todos: computed(() => AppState?.todos)
     };
   },
-  components: { WeatherComponent, QuoteComponent }
+  components: { WeatherComponent, QuoteComponent, TodoComponent }
 }
 </script>
 

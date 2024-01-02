@@ -11,6 +11,6 @@ export const AppState = reactive({
   weather: null,
   /** @type {import('./models/Quote.js').Quote | null} */
   quote: null,
-  /** @type {import('./models/Todo.js').Todo []} */
+  /** @type {import('./models/ToDos.js').ToDos []} */
   todos: []
 })
