@@ -1,7 +1,7 @@
 <template>
-  <div class="col-12 bg-img">
+  <div class="container-fluid bg-img">
     <section class="row">
-      <div>
+      <div class="col-12">
         <!-- <img class="img-fluid" :src="image" alt=""> -->
         <WeatherComponent :weather="weather" />
 
@@ -71,5 +71,6 @@ export default {
   background-image: v-bind(coverImg);
   background-position: center;
   background-size: cover;
+  height: 100svh;
 }
 </style>

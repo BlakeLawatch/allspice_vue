@@ -1,4 +1,4 @@
-export class Image {
+export class MediaImage {
     constructor(data) {
         this.url = data.url
         this.imgUrl = data.imgUrl

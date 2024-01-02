@@ -7,6 +7,15 @@ export const api = Axios.create({
   timeout: 8000,
   // withCredentials: true
 })
+export const bcwSandbox = Axios.create({
+  baseURL: 'https://sandbox.codeworksacademy.com/',
+  timeout: 6000,
+  params: {
+    clientId: 'pOXw2OGv1LsYi7LEBmDF04RLkXQvldml',
+    domain: 'codeworksclassroom.auth0.com',
+    audience: 'https://codeworksclassroom.com'
+  }
+})
 
 api.interceptors.request.use(config => config, handleAxiosError)
 api.interceptors.response.use(response => response, handleAxiosError)

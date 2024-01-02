@@ -5,7 +5,7 @@ export const AppState = reactive({
   user: {},
   /** @type {import('./models/Account.js').Account} */
   account: {},
-  /** @type {import('./models/Image.js').Image | null} */
+  /** @type {import('./models/MediaImage.js').MediaImage | null} */
   activeImage: null,
   /** @type {import('./models/Weather.js').Weather | null} */
   weather: null,
