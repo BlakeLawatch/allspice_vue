@@ -9,6 +9,9 @@
       <div>
         <QuoteComponent :quote="quote" />
       </div>
+      <div>
+        <p>{{ todos }}</p>
+      </div>
     </section>
   </div>
 </template>
@@ -20,6 +23,7 @@ import { imagesService } from '../services/ImagesService'
 import { AppState } from '../AppState.js'
 import { weatherService } from '../services/WeatherService'
 import { quotesService } from '../services/QuotesService'
+import { todosService } from '../services/TodosService'
 import WeatherComponent from '../components/WeatherComponent.vue'
 import QuoteComponent from '../components/QuoteComponent.vue'
 
@@ -28,7 +32,8 @@ export default {
     onMounted(() => {
       getImage();
       getWeather();
-      getQuote()
+      getQuote();
+      getTodos()
     });
     async function getImage() {
       try {
@@ -55,11 +60,22 @@ export default {
         logger.log(error)
       }
     }
+
+    async function getTodos() {
+      try {
+        await todosService.getTodos()
+      } catch (error) {
+        logger.log(error)
+      }
+    }
+
+
+
     return {
-      // image: computed(() => AppState.activeImage?.imgUrl),
       coverImg: computed(() => `url(${AppState.activeImage?.imgUrl})`),
       weather: computed(() => AppState.weather),
-      quote: computed(() => AppState.quote)
+      quote: computed(() => AppState.quote),
+      todos: computed(() => AppState.todos)
     };
   },
   components: { WeatherComponent, QuoteComponent }
