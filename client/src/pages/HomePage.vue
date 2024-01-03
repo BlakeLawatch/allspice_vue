@@ -1,17 +1,24 @@
 <template>
   <div class="container-fluid bg-img">
     <section class="row justify-content-center">
-      <div class="col-12 d-flex align-items-end">
-        <WeatherComponent :weather="weather" />
-        <QuoteComponent :quote="quote" />
+      <div class="col-8">
+
+      </div>
+      <div class="col-3">
+        <div class="mt-4 mb-2 px-5">
+          <CreateTodoComponent />
+        </div>
+        <div class="box-shadow">
+          <div class="p-3 border-style" v-for="todo in todos" :key="todo?.id">
+            <TodoComponent :todo="todo" />
+          </div>
+        </div>
       </div>
     </section>
-    <section class="row">
-      <div v-for="todo in todos" :key="todo?.id">
-        <TodoComponent :todo="todo" />
-      </div>
-      <div>
-        <CreateTodoComponent />
+    <section class="row justify-content-center">
+      <div class="col-12 d-flex justify-content-around mt-3">
+        <WeatherComponent :weather="weather" />
+        <QuoteComponent :quote="quote" />
       </div>
     </section>
   </div>
@@ -93,5 +100,9 @@ export default {
   background-position: center;
   background-size: cover;
   height: 100svh;
+}
+
+.border-style {
+  border-bottom: dashed .1rem rgba(113, 113, 245, 0.582);
 }
 </style>

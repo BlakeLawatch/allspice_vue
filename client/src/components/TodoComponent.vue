@@ -1,12 +1,17 @@
 <template>
     <section class="row justify-content-center">
-        <div class="col-10 box-shadow text-center p-2 text-light">
-            <p>{{ todo.description }}</p>
+
+
+        <div class="text-light d-flex justify-content-between">
+            <div class="d-flex">
+                <input type="checkbox" class="form-check-input rounded-circle me-2" id="completed">
+                <label class="form-check-label" for="completed"></label>
+                <p class="mb-0">{{ todo.description }}</p>
+            </div>
+            <div>
+                <p class="mb-0"><i class="mdi mdi-delete-empty"></i></p>
+            </div>
         </div>
-        <!-- <div class="mb-3 form-check">
-            <input v-model="editable.completed" type="checkbox" class="form-check-input" id="completed">
-            <label class="form-check-label" for="completed"></label>
-        </div> -->
     </section>
 </template>
 

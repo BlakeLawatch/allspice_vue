@@ -5,20 +5,18 @@
   <main>
     <router-view />
   </main>
-  <footer class="bg-dark text-light">
-    Made with 💖 by CodeWorks
-  </footer>
 </template>
 
 <script>
 import { computed } from 'vue'
 import { AppState } from './AppState'
 import Navbar from './components/Navbar.vue'
+import WeatherComponent from './components/WeatherComponent.vue'
 
 export default {
   setup() {
     return {
-      appState: computed(() => AppState)
+      appState: computed(() => AppState),
     }
   },
   components: { Navbar }
@@ -33,13 +31,14 @@ export default {
 
 
 footer {
-  display: grid;
+
   place-content: center;
-  height: 32px;
+  height: 32vh;
 }
 
 .box-shadow {
-  background-color: rgba(128, 128, 128, 0.432);
+  background-color: rgba(7, 8, 88, 0.692);
   border-radius: 40px;
+  border: solid white;
 }
 </style>

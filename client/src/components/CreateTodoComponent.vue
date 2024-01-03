@@ -1,10 +1,10 @@
 <template>
     <form @submit.prevent="createTodo()">
-        <div class="mb-3">
-            <label for="description" class="form-label"></label>
-            <input v-model="editable.description" type="text" class="form-control" id="description">
+        <div class="d-flex box-shadow p-2 rounded">
+            <input v-model="editable.description" type="text" class="form-control form-control-sm" id="description">
+            <button class="ms-1 btn text-light" type="submit"><i class="mdi mdi-plus-thick"></i></button>
+
         </div>
-        <button type="submit"><i class="mdi mdi-plus-thick"></i></button>
     </form>
 </template>
 
