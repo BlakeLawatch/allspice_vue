@@ -9,7 +9,7 @@
       <div>
         <QuoteComponent :quote="quote" />
       </div>
-      <div v-for="todo in todos" :key="todo.id">
+      <div v-for="todo in todos" :key="todo?.id">
         <TodoComponent :todo="todo" />
       </div>
     </section>
@@ -36,6 +36,8 @@ export default {
       getQuote();
       getTodos()
     });
+
+
     async function getImage() {
       try {
         await imagesService.getImage();

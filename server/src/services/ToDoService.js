@@ -2,7 +2,8 @@ import { dbContext } from "../db/DbContext.js";
 import { BadRequest } from "../utils/Errors.js";
 
 class ToDoService {
-    async getToDos(todoId) {
+    async getToDos(userId, todoId) {
+        await userId
         const todos = await dbContext.ToDo.find(todoId)
         return todos
     }

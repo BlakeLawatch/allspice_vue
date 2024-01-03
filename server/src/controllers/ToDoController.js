@@ -7,15 +7,15 @@ export class ToDoController extends BaseController {
     constructor() {
         super('api/todos')
         this.router
-            .use(Auth0Provider.getAuthorizedUserInfo)
             .get('', this.getToDos)
+            .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createToDo)
     }
     async getToDos(req, res, next) {
         try {
             const todoId = req.params.todoId
             const userId = req.userInfo.id
-            const todos = await toDoService.getToDos(todoId)
+            const todos = await toDoService.getToDos(userId, todoId)
             return res.send(todos)
         } catch (error) {
             next(error)
