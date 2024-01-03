@@ -1,16 +1,17 @@
 <template>
   <div class="container-fluid bg-img">
-    <section class="row">
-      <div class="col-12">
-        <!-- <img class="img-fluid" :src="image" alt=""> -->
+    <section class="row justify-content-center">
+      <div class="col-12 d-flex align-items-end">
         <WeatherComponent :weather="weather" />
-
-      </div>
-      <div>
         <QuoteComponent :quote="quote" />
       </div>
+    </section>
+    <section class="row">
       <div v-for="todo in todos" :key="todo?.id">
         <TodoComponent :todo="todo" />
+      </div>
+      <div>
+        <CreateTodoComponent />
       </div>
     </section>
   </div>
@@ -27,6 +28,7 @@ import { todosService } from '../services/TodosService'
 import WeatherComponent from '../components/WeatherComponent.vue'
 import QuoteComponent from '../components/QuoteComponent.vue'
 import TodoComponent from '../components/TodoComponent.vue'
+import CreateTodoComponent from '../components/CreateTodoComponent.vue'
 
 export default {
   setup() {
@@ -81,7 +83,7 @@ export default {
       todos: computed(() => AppState?.todos)
     };
   },
-  components: { WeatherComponent, QuoteComponent, TodoComponent }
+  components: { WeatherComponent, QuoteComponent, TodoComponent, CreateTodoComponent }
 }
 </script>
 

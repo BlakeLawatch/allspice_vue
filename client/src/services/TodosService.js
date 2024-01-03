@@ -11,6 +11,13 @@ class TodosService {
         // logger.log('got todos FINISH IN THE SERVICE', res.data)
 
     }
+
+    async createTodo(data) {
+        const res = await api.post(`api/todos`, data)
+        const newTodo = new ToDos(res.data)
+        AppState.todos.push(newTodo)
+        return newTodo
+    }
 }
 
 export const todosService = new TodosService()
