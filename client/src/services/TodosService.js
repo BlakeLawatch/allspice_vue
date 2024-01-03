@@ -18,6 +18,11 @@ class TodosService {
         AppState.todos.push(newTodo)
         return newTodo
     }
+
+    async destroyTodo(todoId) {
+        const res = await api.delete(`api/todo`)
+        logger.log('destroyed data FINISH IN THE SERVICE', res.data)
+    }
 }
 
 export const todosService = new TodosService()

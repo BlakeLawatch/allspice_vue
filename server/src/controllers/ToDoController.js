@@ -10,6 +10,7 @@ export class ToDoController extends BaseController {
             .get('', this.getToDos)
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createToDo)
+            .delete('/:todoId', this.destroyTodo)
     }
     async getToDos(req, res, next) {
         try {
@@ -33,4 +34,16 @@ export class ToDoController extends BaseController {
             next(error)
         }
     }
+    async destroyTodo(req, res, next) {
+        try {
+            const todoId = req.params.id
+            const userId = req.userInfo.id
+            const destroyedTodo = await toDoService.destroyTodo(todoId, userId)
+            return res.send(destroyedTodo)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+
 }
