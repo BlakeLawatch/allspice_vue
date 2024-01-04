@@ -8,7 +8,7 @@
         <div class="mt-4 mb-2 px-5">
           <CreateTodoComponent />
         </div>
-        <div class="box-shadow">
+        <div class="box-shadow todo-overflow">
           <div class="p-3 border-style" v-for="todo in todos" :key="todo.id">
             <TodoComponent :todo="todo" />
           </div>
@@ -104,5 +104,10 @@ export default {
 
 .border-style {
   border-bottom: dashed .1rem rgba(113, 113, 245, 0.582);
+}
+
+.todo-overflow {
+  overflow-y: auto;
+  max-height: 40svh;
 }
 </style>

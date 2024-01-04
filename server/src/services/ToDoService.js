@@ -11,12 +11,10 @@ class ToDoService {
         return toDo
 
     }
-    async destroyTodo(todoId, userId) {
+    async destroyTodo(todoId) {
         const destroyedTodo = await dbContext.ToDo.findByIdAndDelete(todoId)
-        if (destroyedTodo.creatorId.toString() != userId) {
-            throw new Forbidden('not yours to delete')
-        }
-        await destroyedTodo.remove()
+
+
         return 'Todo has been deleted'
     }
 

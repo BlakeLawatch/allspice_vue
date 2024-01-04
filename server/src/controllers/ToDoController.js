@@ -36,9 +36,8 @@ export class ToDoController extends BaseController {
     }
     async destroyTodo(req, res, next) {
         try {
-            const todoId = req.params.id
-            const userId = req.userInfo.id
-            const destroyedTodo = await toDoService.destroyTodo(todoId, userId)
+            const todoId = req.params.todoId
+            const destroyedTodo = await toDoService.destroyTodo(todoId)
             return res.send(destroyedTodo)
         } catch (error) {
             next(error)

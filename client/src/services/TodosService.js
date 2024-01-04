@@ -2,6 +2,7 @@ import { AppState } from "../AppState"
 import { ToDos } from "../models/ToDos"
 import { logger } from "../utils/Logger"
 import { api } from "./AxiosService"
+import Pop from '../utils/Pop';
 
 class TodosService {
 
@@ -20,7 +21,15 @@ class TodosService {
     }
 
     async destroyTodo(todoId) {
-        const res = await api.delete(`api/todo/${todoId}`)
+        const wantsToDelete = await pop.confirm('You sure about that?')
+        if (!wantsToDelete) {
+            return
+        }
+        const res = await api.delete(`api/todos/${todoId}`)
+        const index = AppState.todos.findIndex(todo => todo.id == todoId)
+        if (index > -1) {
+            AppState.todos.splice(index, 1)
+        }
         logger.log('destroyed data FINISH IN THE SERVICE', res.data)
     }
 }

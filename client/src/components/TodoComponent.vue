@@ -2,14 +2,14 @@
     <section class="row justify-content-center">
 
 
-        <div class="text-light d-flex justify-content-between">
+        <div class="text-light d-flex justify-content-between todo-overflow">
             <div class="d-flex align-items-center">
                 <input type="checkbox" class="form-check-input rounded-circle me-2" id="completed">
                 <label class="form-check-label" for="completed"></label>
                 <p class="mb-0">{{ todo.description }}</p>
             </div>
             <div>
-                <button @click="destroyTodo(todo.id)" class=" fs-4 btn text-light"><i
+                <button @click="destroyTodo(todo.id)" class="fs-4 btn text-light"><i
                         class="mdi mdi-delete-empty"></i></button>
             </div>
         </div>
@@ -28,7 +28,7 @@ import { logger } from '../utils/Logger';
 
 export default {
     props: { todo: { type: ToDos, required: true } },
-    setup(props) {
+    setup() {
         return {
             todos: computed(() => AppState?.todos),
 
