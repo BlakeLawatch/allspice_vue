@@ -20,7 +20,7 @@ class TodosService {
     }
 
     async destroyTodo(todoId) {
-        const res = await api.delete(`api/todo`)
+        const res = await api.delete(`api/todo/${todoId}`)
         logger.log('destroyed data FINISH IN THE SERVICE', res.data)
     }
 }

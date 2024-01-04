@@ -9,7 +9,7 @@
           <CreateTodoComponent />
         </div>
         <div class="box-shadow">
-          <div class="p-3 border-style" v-for="todo in todos" :key="todo?.id">
+          <div class="p-3 border-style" v-for="todo in todos" :key="todo.id">
             <TodoComponent :todo="todo" />
           </div>
         </div>
