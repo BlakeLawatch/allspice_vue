@@ -21,7 +21,7 @@ class TodosService {
     }
 
     async destroyTodo(todoId) {
-        const wantsToDelete = await pop.confirm('You sure about that?')
+        const wantsToDelete = await Pop.confirm('You sure about that?')
         if (!wantsToDelete) {
             return
         }

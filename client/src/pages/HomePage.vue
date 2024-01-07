@@ -103,11 +103,12 @@ export default {
 }
 
 .border-style {
-  border-bottom: dashed .1rem rgba(113, 113, 245, 0.582);
+  border-bottom: dashed .1rem #7171f594;
 }
 
 .todo-overflow {
   overflow-y: auto;
   max-height: 40svh;
+  scrollbar-width: thin;
 }
 </style>
