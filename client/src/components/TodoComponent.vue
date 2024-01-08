@@ -4,9 +4,10 @@
 
         <div class="text-light d-flex justify-content-between todo-overflow">
             <div class="d-flex align-items-center">
-                <input type="checkbox" class="form-check-input rounded-circle me-2" id="completed">
-                <label class="form-check-label" for="completed"></label>
-                <p class="mb-0">{{ todo.description }}</p>
+                <input @click="done = !done" type="checkbox" class="form-check-input rounded-circle me-2" id="completed">
+                <label class="form-check-label toggle-on" for="completed"></label>
+                <p v-if="done" class="mb-0 fw-bold">{{ todo.description }}</p>
+                <p v-else class="mb-0 line">{{ todo.description }}</p>
             </div>
             <div>
                 <button @click="destroyTodo(todo.id)" class="fs-4 btn text-light"><i
@@ -19,7 +20,7 @@
 
 <script>
 
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { ToDos } from '../models/ToDos';
 import { AppState } from '../AppState';
 import { todosService } from '../services/TodosService';
@@ -29,7 +30,9 @@ import { logger } from '../utils/Logger';
 export default {
     props: { todo: { type: ToDos, required: true } },
     setup() {
+        const done = ref(true)
         return {
+            done,
             todos: computed(() => AppState?.todos),
 
 
@@ -47,4 +50,8 @@ export default {
 </script>
 
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.line {
+    text-decoration: line-through;
+}
+</style>
