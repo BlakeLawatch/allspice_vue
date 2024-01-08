@@ -1,8 +1,8 @@
 <template>
   <div class="container-fluid bg-img">
     <section class="row justify-content-center">
-      <div class="col-8">
-
+      <div class="col-8 d-flex align-items-end">
+        <QuoteComponent :quote="quote" />
       </div>
       <div class="col-3">
         <div class="mt-4 mb-2 px-5">
@@ -13,12 +13,6 @@
             <TodoComponent :todo="todo" />
           </div>
         </div>
-      </div>
-    </section>
-    <section class="row justify-content-center">
-      <div class="col-12 d-flex justify-content-around mt-3">
-        <!-- <WeatherComponent :weather="weather" /> -->
-        <QuoteComponent :quote="quote" />
       </div>
     </section>
   </div>
@@ -109,10 +103,10 @@ export default {
 
 .todo-overflow {
   overflow-y: auto;
-  max-height: 40svh;
+  height: 80svh;
 
   // NOTE why won't this work?
 
-  // scrollbar-width: thin;
+  scrollbar-width: none;
 }
 </style>
