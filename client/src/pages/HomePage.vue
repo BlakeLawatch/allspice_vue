@@ -17,7 +17,7 @@
     </section>
     <section class="row justify-content-center">
       <div class="col-12 d-flex justify-content-around mt-3">
-        <WeatherComponent :weather="weather" />
+        <!-- <WeatherComponent :weather="weather" /> -->
         <QuoteComponent :quote="quote" />
       </div>
     </section>

@@ -9,9 +9,9 @@
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarText">
+    <div class="collapse navbar-collapse weather-border" id="navbarText">
+      <WeatherComponent :weather="weather" />
       <ul class="navbar-nav me-auto">
-
       </ul>
       <!-- LOGIN COMPONENT HERE -->
       <!-- <div>
@@ -24,9 +24,11 @@
 </template>
 
 <script>
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { loadState, saveState } from '../utils/Store.js';
 import Login from './Login.vue';
+import WeatherComponent from './WeatherComponent.vue';
+import { AppState } from '../AppState';
 export default {
   setup() {
 
@@ -42,10 +44,11 @@ export default {
         theme.value = theme.value == 'light' ? 'dark' : 'light'
         document.documentElement.setAttribute('data-bs-theme', theme.value)
         saveState('theme', theme.value)
-      }
+      },
+      weather: computed(() => AppState.weather)
     }
   },
-  components: { Login }
+  components: { Login, WeatherComponent }
 }
 </script>
 
@@ -72,6 +75,10 @@ a:hover {
 
 .color {
   background-image: linear-gradient(to right, #070858, #7171f594);
-  border-bottom: dashed white;
+  border-bottom: thin solid white;
+}
+
+.weather-border {
+  border-left: thin dashed white;
 }
 </style>

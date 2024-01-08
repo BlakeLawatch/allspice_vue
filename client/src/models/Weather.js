@@ -4,7 +4,7 @@ export class Weather {
         this.main = ((data.main.temp - 273.15) * 9 / 5 + 32).toFixed(0)
         this.mainCelsius = (data.main.temp - 273.15).toFixed(0)
         this.name = data.name
-        this.description = data.weather.description
+        this.clouds = data.clouds.all
     }
 }
 
