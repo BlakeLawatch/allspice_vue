@@ -32,6 +32,11 @@ class TodosService {
         }
         logger.log('destroyed data FINISH IN THE SERVICE', res.data)
     }
+
+    async completeTask(data, todoId) {
+        const res = await api.put(`api/todos/${todoId}`, data)
+        logger.log('updated FINISH IN THE SERVICE', res.data)
+    }
 }
 
 export const todosService = new TodosService()

@@ -4,8 +4,10 @@
 
         <div class="text-light d-flex justify-content-between todo-overflow">
             <div class="d-flex align-items-center">
-                <input @click="done = !done" type="checkbox" class="form-check-input rounded-circle me-2" id="completed">
-                <label class="form-check-label toggle-on" for="completed"></label>
+                <form @submit.prevent="completeTask(todo.id)">
+                    <input v-model="editable.completed" @click="done = !done" type="checkbox"
+                        class="form-check-input rounded-circle me-2 selectable" id="completed">
+                </form>
                 <p v-if="done" class="mb-0 fw-bold">{{ todo.description }}</p>
                 <p v-else class="mb-0 line">{{ todo.description }}</p>
             </div>
@@ -31,8 +33,10 @@ export default {
     props: { todo: { type: ToDos, required: true } },
     setup() {
         const done = ref(true)
+        const editable = ref({})
         return {
             done,
+            editable,
             todos: computed(() => AppState?.todos),
 
 
@@ -40,6 +44,15 @@ export default {
                 try {
                     await todosService.destroyTodo(todoId)
                     Pop.success("Deleted Todo")
+                } catch (error) {
+                    logger.log(error)
+                }
+            },
+
+            async completeTask(todoId) {
+                try {
+                    const data = editable.value
+                    await todosService.completeTask(data, todoId)
                 } catch (error) {
                     logger.log(error)
                 }
@@ -53,5 +66,6 @@ export default {
 <style lang="scss" scoped>
 .line {
     text-decoration: line-through;
+    color: #7171f594;
 }
 </style>
