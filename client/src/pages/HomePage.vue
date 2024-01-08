@@ -87,7 +87,8 @@ export default {
       coverImg: computed(() => `url(${AppState.activeImage?.imgUrl})`),
       weather: computed(() => AppState.weather),
       quote: computed(() => AppState.quote),
-      todos: computed(() => AppState?.todos)
+      todos: computed(() => AppState?.todos),
+      isHidden: false
     };
   },
   components: { WeatherComponent, QuoteComponent, TodoComponent, CreateTodoComponent }
@@ -109,6 +110,9 @@ export default {
 .todo-overflow {
   overflow-y: auto;
   max-height: 40svh;
-  scrollbar-width: thin;
+
+  // NOTE why won't this work?
+
+  // scrollbar-width: thin;
 }
 </style>
