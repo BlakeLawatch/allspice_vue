@@ -17,6 +17,10 @@ class ToDoService {
 
         return 'Todo has been deleted'
     }
+    async editTodo(todoId) {
+        const editedTodo = await dbContext.ToDo.findById(todoId)
+        return editedTodo
+    }
 
 }
 

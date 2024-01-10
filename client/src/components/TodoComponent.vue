@@ -4,10 +4,10 @@
 
         <div class="text-light d-flex justify-content-between todo-overflow">
             <div class="d-flex align-items-center">
-                <form @submit.prevent="completeTask(todo.id)">
-                    <input v-model="editable.completed" @click="done = !done" type="checkbox"
-                        class="form-check-input rounded-circle me-2 selectable" id="completed">
-                </form>
+
+                <input @click="completeTask(todo.id), done = !done" v-model="editable.completed" type="checkbox"
+                    class="form-check-input rounded-circle me-2 selectable" id="completed">
+
                 <p v-if="done" class="mb-0 fw-bold">{{ todo.description }}</p>
                 <p v-else class="mb-0 line">{{ todo.description }}</p>
             </div>

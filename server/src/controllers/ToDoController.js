@@ -11,6 +11,7 @@ export class ToDoController extends BaseController {
             .use(Auth0Provider.getAuthorizedUserInfo)
             .post('', this.createToDo)
             .delete('/:todoId', this.destroyTodo)
+            .put('/:todoId', this.editTodo)
     }
     async getToDos(req, res, next) {
         try {
@@ -43,6 +44,17 @@ export class ToDoController extends BaseController {
             next(error)
         }
     }
+    async editTodo(req, res, next) {
+        try {
+            const todoId = req.params.todoId
+            const editedTodo = await toDoService.editTodo(todoId)
+            return res.send(editedTodo)
+        } catch (error) {
+            next(error)
+        }
+    }
+
+
 
 
 }
