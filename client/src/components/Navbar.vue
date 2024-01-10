@@ -11,6 +11,9 @@
     </button>
     <div class="collapse navbar-collapse weather-border" id="navbarText">
       <WeatherComponent :weather="weather" />
+      <div>
+        <p>{{ currentTime }}</p>
+      </div>
       <ul class="navbar-nav me-auto">
       </ul>
       <!-- LOGIN COMPONENT HERE -->
@@ -34,18 +37,23 @@ export default {
 
     const theme = ref(loadState('theme') || 'light')
 
+
     onMounted(() => {
       document.documentElement.setAttribute('data-bs-theme', theme.value)
     })
 
     return {
       theme,
+      weather: computed(() => AppState.weather),
+      currentTime: computed(() => new Date().toLocaleTimeString()),
+
       toggleTheme() {
         theme.value = theme.value == 'light' ? 'dark' : 'light'
         document.documentElement.setAttribute('data-bs-theme', theme.value)
         saveState('theme', theme.value)
       },
-      weather: computed(() => AppState.weather)
+
+
     }
   },
   components: { Login, WeatherComponent }
