@@ -47,6 +47,7 @@ export class ToDoController extends BaseController {
     async editTodo(req, res, next) {
         try {
             const todoId = req.params.todoId
+            // const userInfo = req.body
             const editedTodo = await toDoService.editTodo(todoId)
             return res.send(editedTodo)
         } catch (error) {

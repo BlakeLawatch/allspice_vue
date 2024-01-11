@@ -12,5 +12,6 @@ export const AppState = reactive({
   /** @type {import('./models/Quote.js').Quote | null} */
   quote: null,
   /** @type {import('./models/ToDos.js').ToDos []} */
-  todos: []
+  todos: [],
+  activeTodo: null
 })

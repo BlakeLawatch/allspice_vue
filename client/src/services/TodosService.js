@@ -35,7 +35,9 @@ class TodosService {
 
     async completeTask(data, todoId) {
         const res = await api.put(`api/todos/${todoId}`, data)
-        logger.log('updated FINISH IN THE SERVICE', res.data)
+        AppState.activeTodo = new ToDos(res.data)
+        // AppState.activeTodo = newTodo
+        logger.log('updated FINISH IN THE SERVICE', AppState.activeTodo)
     }
 }
 

@@ -9,10 +9,14 @@
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse weather-border" id="navbarText">
-      <WeatherComponent :weather="weather" />
-      <div>
-        <p>{{ currentTime }}</p>
+    <div class="collapse navbar-collapse d-flex justify-content-around" id="navbarText">
+      <div class="weather-border">
+        <WeatherComponent :weather="weather" />
+      </div>
+      <div class="d-flex">
+        <b class="fs-2 ms-5 fw-bold text-light">{{ currentTime }}</b>
+        <!-- <b class="fs-2 ms-5 fw-bold text-light">{{ new Date().toLocaleTimeString() }}</b> -->
+
       </div>
       <ul class="navbar-nav me-auto">
       </ul>
@@ -27,7 +31,7 @@
 </template>
 
 <script>
-import { computed, onMounted, ref } from 'vue';
+import { computed, onMounted, ref, watchEffect } from 'vue';
 import { loadState, saveState } from '../utils/Store.js';
 import Login from './Login.vue';
 import WeatherComponent from './WeatherComponent.vue';
@@ -36,16 +40,24 @@ export default {
   setup() {
 
     const theme = ref(loadState('theme') || 'light')
+    const currentTime = ref(new Date().toLocaleTimeString())
+
+    function getTime() {
+      currentTime
+    }
 
 
     onMounted(() => {
       document.documentElement.setAttribute('data-bs-theme', theme.value)
+      getTime()
+
     })
+    setInterval(getTime(), 1000)
 
     return {
       theme,
       weather: computed(() => AppState.weather),
-      currentTime: computed(() => new Date().toLocaleTimeString()),
+      // currentTime: computed(() => new Date().toLocaleTimeString()),
 
       toggleTheme() {
         theme.value = theme.value == 'light' ? 'dark' : 'light'
@@ -54,9 +66,11 @@ export default {
       },
 
 
+
     }
   },
   components: { Login, WeatherComponent }
+
 }
 </script>
 
@@ -88,5 +102,6 @@ a:hover {
 
 .weather-border {
   border-left: thin dashed white;
+  border-right: thin dashed white;
 }
 </style>

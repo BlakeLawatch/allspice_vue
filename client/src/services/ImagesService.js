@@ -9,7 +9,7 @@ class ImagesService {
         const res = await bcwSandbox.get('api/images')
         // AppState.activeImage = res.data.map(pojo => new Image(pojo))
         AppState.activeImage = new MediaImage(res.data)
-        logger.log('Active image', AppState.activeImage)
+        // logger.log('Active image', AppState.activeImage)
 
     }
 }

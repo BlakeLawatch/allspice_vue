@@ -19,6 +19,8 @@ class ToDoService {
     }
     async editTodo(todoId) {
         const editedTodo = await dbContext.ToDo.findById(todoId)
+        editedTodo.completed = !editedTodo.completed
+        await editedTodo.save()
         return editedTodo
     }
 
