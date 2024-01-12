@@ -6,9 +6,9 @@
             <div class="d-flex align-items-center">
 
                 <input @click="completeTask(todo.id), done = !done" v-model="editable.completed" type="checkbox"
-                    class="form-check-input rounded-circle me-2 selectable" id="completed">
+                    class="form-check-input rounded-circle me-2 selectable" id="completed" :checked="todo.completed">
 
-                <p v-if="done" class="mb-0 fw-bold">{{ todo.description }}</p>
+                <p v-if="!todo.completed && done" class="mb-0 fw-bold">{{ todo.description }}</p>
                 <p v-else class="mb-0 line">{{ todo.description }}</p>
             </div>
             <div>
@@ -67,5 +67,7 @@ export default {
 .line {
     text-decoration: line-through;
     color: #7171f594;
+
+
 }
 </style>

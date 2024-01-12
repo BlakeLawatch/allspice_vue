@@ -14,7 +14,7 @@
         <WeatherComponent :weather="weather" />
       </div>
       <div class="d-flex">
-        <b class="fs-2 ms-5 fw-bold text-light">{{ currentTime }}</b>
+        <p class="fs-2 ms-5 fw-bold text-light">{{ currentTime }}</p>
         <!-- <b class="fs-2 ms-5 fw-bold text-light">{{ new Date().toLocaleTimeString() }}</b> -->
 
       </div>
@@ -31,7 +31,7 @@
 </template>
 
 <script>
-import { computed, onMounted, ref, watchEffect } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { loadState, saveState } from '../utils/Store.js';
 import Login from './Login.vue';
 import WeatherComponent from './WeatherComponent.vue';
@@ -40,24 +40,20 @@ export default {
   setup() {
 
     const theme = ref(loadState('theme') || 'light')
-    const currentTime = ref(new Date().toLocaleTimeString())
-
-    function getTime() {
-      currentTime
-    }
+    // const currentTime = new Date().toLocaleTimeString()
 
 
     onMounted(() => {
       document.documentElement.setAttribute('data-bs-theme', theme.value)
-      getTime()
 
     })
-    setInterval(getTime(), 1000)
+
 
     return {
       theme,
+      currentTime: computed(() => new Date().toLocaleTimeString()),
       weather: computed(() => AppState.weather),
-      // currentTime: computed(() => new Date().toLocaleTimeString()),
+
 
       toggleTheme() {
         theme.value = theme.value == 'light' ? 'dark' : 'light'

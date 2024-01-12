@@ -40,7 +40,6 @@ export default {
       getTodos()
     });
 
-
     async function getImage() {
       try {
         await imagesService.getImage();
