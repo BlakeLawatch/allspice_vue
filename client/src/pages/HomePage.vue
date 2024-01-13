@@ -103,9 +103,6 @@ export default {
 .todo-overflow {
   overflow-y: auto;
   height: 80svh;
-
-  // NOTE why won't this work?
-
   scrollbar-width: none;
 }
 </style>

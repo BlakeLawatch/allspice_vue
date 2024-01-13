@@ -14,9 +14,7 @@
         <WeatherComponent :weather="weather" />
       </div>
       <div class="d-flex">
-        <p class="fs-2 ms-5 fw-bold text-light">{{ currentTime }}</p>
-        <!-- <b class="fs-2 ms-5 fw-bold text-light">{{ new Date().toLocaleTimeString() }}</b> -->
-
+        <p class="fs-2 mb-0 ms-5 fw-bold text-light">{{ currentTime }}</p>
       </div>
       <ul class="navbar-nav me-auto">
       </ul>
@@ -40,18 +38,31 @@ export default {
   setup() {
 
     const theme = ref(loadState('theme') || 'light')
-    // const currentTime = new Date().toLocaleTimeString()
+    const currentTime = ref(new Date().toLocaleTimeString())
+
 
 
     onMounted(() => {
       document.documentElement.setAttribute('data-bs-theme', theme.value)
+      setInterval(() => {
+        currentTime.value = new Date().toLocaleTimeString()
+      }, 1000)
 
     })
+
+    // function timer() {
+    //   const currentTime = new Date()
+    //   const hours = currentTime.getHours()
+    //   const minutes = currentTime.getMinutes()
+    //   const currentTime = hours + ':'+ minutes
+    // }
+
+
 
 
     return {
       theme,
-      currentTime: computed(() => new Date().toLocaleTimeString()),
+      currentTime,
       weather: computed(() => AppState.weather),
 
 
@@ -60,6 +71,7 @@ export default {
         document.documentElement.setAttribute('data-bs-theme', theme.value)
         saveState('theme', theme.value)
       },
+
 
 
 
