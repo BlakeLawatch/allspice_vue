@@ -104,7 +104,7 @@ a:hover {
 }
 
 .color {
-  background-image: linear-gradient(to right, #070858, #7171f594);
+  background-image: linear-gradient(to right, #070858, #7171f5);
   border-bottom: thin solid white;
 }
 

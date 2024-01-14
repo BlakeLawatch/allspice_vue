@@ -1,8 +1,9 @@
 <template>
   <div class="container-fluid bg-img">
     <section class="row justify-content-center">
-      <div class="col-8 d-flex align-items-end">
-        <QuoteComponent :quote="quote" />
+      <Navbar />
+      <div class="col-8">
+
       </div>
       <div class="col-3">
         <div class="mt-4 mb-2 px-5">
@@ -14,6 +15,10 @@
           </div>
         </div>
       </div>
+      <div class="col-8 d-flex align-items-end">
+        <QuoteComponent :quote="quote" />
+      </div>
+      <div class="col-3"></div>
     </section>
   </div>
 </template>
@@ -30,6 +35,7 @@ import WeatherComponent from '../components/WeatherComponent.vue'
 import QuoteComponent from '../components/QuoteComponent.vue'
 import TodoComponent from '../components/TodoComponent.vue'
 import CreateTodoComponent from '../components/CreateTodoComponent.vue'
+import Navbar from '../components/Navbar.vue'
 
 export default {
   setup() {
@@ -84,7 +90,7 @@ export default {
       isHidden: false
     };
   },
-  components: { WeatherComponent, QuoteComponent, TodoComponent, CreateTodoComponent }
+  components: { WeatherComponent, QuoteComponent, TodoComponent, CreateTodoComponent, Navbar }
 }
 </script>
 
@@ -102,7 +108,16 @@ export default {
 
 .todo-overflow {
   overflow-y: auto;
-  height: 80svh;
-  scrollbar-width: none;
+  height: 50svh;
+
 }
+
+.todo-overflow::-webkit-scrollbar {
+  border-radius: 1px;
+
+}
+
+// .todo-overflow::-moz-progress-bar {
+//   border-radius: 1px;
+// }
 </style>
