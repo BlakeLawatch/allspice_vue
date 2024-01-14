@@ -5,7 +5,7 @@
       <div class="col-8">
 
       </div>
-      <div class="col-3">
+      <div v-if="account" class="col-3">
         <div class="mt-4 mb-2 px-5">
           <CreateTodoComponent />
         </div>
@@ -87,6 +87,7 @@ export default {
       weather: computed(() => AppState.weather),
       quote: computed(() => AppState.quote),
       todos: computed(() => AppState?.todos),
+      account: computed(() => AppState.account),
       isHidden: false
     };
   },

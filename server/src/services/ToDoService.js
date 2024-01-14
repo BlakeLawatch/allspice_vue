@@ -1,9 +1,9 @@
 import { dbContext } from "../db/DbContext.js";
-import { BadRequest, Forbidden } from "../utils/Errors.js";
+
 
 class ToDoService {
-    async getToDos() {
-        const todos = await dbContext.ToDo.find()
+    async getToDos(userId) {
+        const todos = await dbContext.ToDo.find({ creatorId: userId })
         return todos
     }
     async createToDo(data) {
@@ -12,7 +12,7 @@ class ToDoService {
 
     }
     async destroyTodo(todoId) {
-        const destroyedTodo = await dbContext.ToDo.findByIdAndDelete(todoId)
+        await dbContext.ToDo.findByIdAndDelete(todoId)
 
 
         return 'Todo has been deleted'

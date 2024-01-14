@@ -7,9 +7,9 @@ import Pop from '../utils/Pop';
 class TodosService {
 
     async getTodos() {
-        const res = await api.get(`api/todos`)
+        const res = await api.get(`account/todos`)
         AppState.todos = res.data.map(pojo => new ToDos(pojo))
-        // logger.log('got todos FINISH IN THE SERVICE', res.data)
+        logger.log('got todos', AppState.todos)
 
     }
 
